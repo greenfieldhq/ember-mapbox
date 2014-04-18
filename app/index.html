@@ -13,7 +13,15 @@
     {{outlet}}
   </script>
 
+  <script type="text/x-handlebars" data-template-name="components/ember-mapbox">
+    <h1>Blog Post</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </script>
+
   <script type="text/x-handlebars" id="index">
+    {{#each}}
+      {{ember-mapbox}}
+    {{/each}}
     <ul>
     {{#each item in model}}
       <li>{{item}}</li>
