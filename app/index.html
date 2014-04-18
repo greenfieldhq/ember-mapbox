@@ -5,34 +5,28 @@
   <title>Ember Mapbox</title>
   <link rel="stylesheet" href="assets/css/normalize.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 </head>
 <body>
   <script type="text/x-handlebars">
     <h2>Ember Mapbox</h2>
-
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="components/ember-mapbox">
-    <h1>Blog Post</h1>
-    <p>Lorem ipsum dolor sit amet.</p>
+  <script type="text/x-handlebars" data-template-name="components/mapbox-map">
+    <div id="map" class="map"></div>
   </script>
 
   <script type="text/x-handlebars" id="index">
-    {{#each}}
-      {{ember-mapbox}}
-    {{/each}}
-    <ul>
-    {{#each item in model}}
-      <li>{{item}}</li>
-    {{/each}}
-    </ul>
+    {{mapbox-map}}
   </script>
 
   <script src="assets/js/libs/jquery-1.10.2.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
   <script src="assets/js/libs/handlebars-1.1.2.js"></script>
   <script src="assets/js/libs/ember-1.5.0.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/components/mapbox-component.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>

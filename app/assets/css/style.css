@@ -2,3 +2,8 @@
 .ember-application {
     margin: 20px;
 }
+
+div.map {
+  width: 100%;
+  height: 600px;
+}

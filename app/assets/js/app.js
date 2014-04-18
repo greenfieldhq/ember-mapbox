@@ -9,3 +9,9 @@ App.IndexRoute = Ember.Route.extend({
     return ['red', 'yellow', 'blue'];
   }
 });
+
+App.config = { 
+  api_key: 'greenfield.i0p4gl0k',
+  center: [42.35, -71.051],
+  zoom: 15
+};
