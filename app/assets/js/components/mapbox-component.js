@@ -9,9 +9,9 @@ App.MapboxMapComponent = Ember.Component.extend({
     this.get('markers').forEach(function(marker) {
       var marker = L.marker([marker.latitude, marker.longitude], {
           icon: L.divIcon({
-            className: '',
-            html: 'test',
-            iconSize: [30, 30]
+            className: 'marker-icon',
+            html: '',
+            iconSize: [15, 15]
           })
       });
 
