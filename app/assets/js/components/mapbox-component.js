@@ -14,7 +14,6 @@ App.MapboxMapComponent = Ember.Component.extend({
             iconSize: [15, 15]
           })
       });
-
       marker.addTo(App.map);
     }); 
   }
