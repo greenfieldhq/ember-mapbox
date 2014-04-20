@@ -21,3 +21,62 @@ div.map {
   z-index: 1000 !important;
 }
 
+.popup-col {
+    width: 200px;
+    float: left;
+    background:white;
+}
+
+.popup-overview p {
+}
+
+.leaflet-container img.popup-logo {
+  max-width:90px !important; 
+  max-height:70px;
+}
+
+.leaflet-container td.popup-logo {
+  vertical-align: top;
+}
+
+td.company-overview {
+  padding-top: 5px;
+  margin-bottom: 10px;
+  padding-bottom: 13px;
+}
+
+td.company-overview p {
+  font-size: 13px !important;
+  line-height: 20px;
+}
+
+div.company-overview {
+  height: 150px;
+  width: 275px;
+  overflow-y: scroll;
+  overflow: -moz-scrollbars-vertical; 
+}
+
+td.company-stats {
+  width: 33%;
+  text-align: center;
+}
+
+td.company-stats h2 {
+  color: #000;
+  margin: 0 0 0px;
+  font-size: 19px;
+  font-weight: bold;
+  font-family: Lato !important;
+  line-height: 8px;
+}
+
+td.company-stats h3 {
+  color: #000;
+  margin: 0 0 0px;
+  font-family: calibri;
+  font-size: 13px;
+  color: #babcc0;
+}
+
+

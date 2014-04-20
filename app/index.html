@@ -25,20 +25,20 @@
     <table>
       <tr>
         <td colspan="2">
-          <h2 class="name"><a href="{{unbound crunchbase_url}}" target="_blank">{{unbound name}}</a></h2>
-          <a href="{{unbound homepage_url}}" target="_blank">{{displayHomepageUrl}}</a><br>
+          <h2 class="name"><a {{bind-attr href=crunchbase_url}} target="_blank">{{unbound name}}</a></h2>
+          <a {{bind-attr href=homepage_url}} target="_blank">{{homepage_url}}</a><br>
           <span class="company-category">{{category}}</span>
         </td>
         <td align="right" class="popup-logo">
           {{#if image}}
-          <img src="{{unbound image}}" class="popup-logo">
+            <img {{bind-attr src=image}} class="popup-logo">
           {{/if}}
         </td>
       </tr>
       <tr>
         <td colspan="3" class="company-overview">
           <div class="company-overview"> 
-            {{{unbound display_overview}}}
+            {{{unbound overview}}}
           </div>
         </td>
       </tr>
