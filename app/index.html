@@ -8,7 +8,7 @@
   <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 </head>
 <body>
-  <script type="text/x-handlebars">
+  <script type="text/x-handlebars" data-template-name="application">
     <h2>Ember Mapbox</h2>
     {{outlet}}
   </script>
@@ -17,8 +17,46 @@
     <div id="map" class="map"></div>
   </script>
 
-  <script type="text/x-handlebars" id="index">
-    {{mapbox-map}}
+  <script type="text/x-handlebars" data-template-name="index">
+    {{mapbox-map markers=App.data.companies}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="popup">
+    <table>
+      <tr>
+        <td colspan="2">
+          <h2 class="name"><a href="{{unbound crunchbase_url}}" target="_blank">{{unbound name}}</a></h2>
+          <a href="{{unbound homepage_url}}" target="_blank">{{displayHomepageUrl}}</a><br>
+          <span class="company-category">{{category}}</span>
+        </td>
+        <td align="right" class="popup-logo">
+          {{#if image}}
+          <img src="{{unbound image}}" class="popup-logo">
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" class="company-overview">
+          <div class="company-overview"> 
+            {{{unbound display_overview}}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="company-stats">
+          <h2>{{dash-for-null employee_count}}</h2>
+          <h3>EMPLOYEES</h3>
+        </td>
+        <td class="company-stats">
+          <h2>{{dash-for-null money_raised}}</h2>
+          <h3>FUNDING</h3>
+        </td>
+        <td class="company-stats">
+          <h2>{{dash-for-null founded_year}}</h2>
+          <h3>FOUNDED</h3>
+        </td>
+      </tr>
+    </table> 
   </script>
 
   <script src="assets/js/libs/jquery-1.10.2.js"></script>
