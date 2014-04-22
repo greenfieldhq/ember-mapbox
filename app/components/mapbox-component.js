@@ -1,40 +1,46 @@
 App.MapboxMapComponent = Ember.Component.extend({
   didInsertElement: function() {
     this._super();
-    App.map = L.mapbox.map('map', App.config.api_key).setView(App.config.center, App.config.zoom);
-
-    var controller = this;
-
-    this.get('markers').forEach(function(item) {
-      var marker = L.marker([item.latitude, item.longitude], {
+    App.map = L.mapbox.map('map', App.mapbox.api_key).setView(App.mapbox.center, App.mapbox.zoom);
+    this.drawMarkers();
+  },
+  drawMarkers: function() {
+    if (typeof(App.map) != 'undefined') {
+      // remove old markers, skip index 0 as that is the actual map tiles
+      var layerIndex = 0;
+      App.map.eachLayer(function(layer) {
+        if (layerIndex == 0) {
+          layerIndex++;
+          return;
+        }
+        App.map.removeLayer(layer);
+        layerIndex++;
+      }); 
+      // add new markers
+      var controller = this;
+      this.get('markers').forEach(function(item) {
+        var marker = L.marker([item.latitude, item.longitude], {
           icon: L.divIcon({
             className: 'marker-icon',
             html: '',
             iconSize: [15, 15]
           })
-      });
-      marker.addTo(App.map);
+        });
+        marker.addTo(App.map);
 
-      marker.removeEventListener();
+        marker.removeEventListener();
 
-      var $this = controller;
-      marker.on('click', function(event) {
-        var popupView = $this.container.lookup('component:mapbox-map').createChildView($this.get('popup-view'), { context: item });
-        event.target.bindPopup(popupView.renderToBuffer().buffer);
-        event.target.openPopup();
-      });
-    }); 
-  }
+        var $this = controller;
+        marker.on('click', function(event) {
+          var popupView = $this.container.lookup('component:mapbox-map').createChildView($this.get('popup-view'), { context: item });
+          event.target.bindPopup(popupView.renderToBuffer().buffer);
+          event.target.openPopup();
+        });
+      }); 
+    }
+  }.observes('markers')
 });
 
 App.PopupView = Ember.View.extend({
-  templateName: 'popup'
-});
-
-Ember.Handlebars.helper('dash-for-null', function(value, options) {
-  if (value != null) {
-    return value;
-  } else {
-    return '-';
-  }
+  template: Ember.Handlebars.compile('<ul><li>name: {{name}}</p><p>overview: {{overview}}</p>')
 });

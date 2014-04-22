@@ -21,34 +21,6 @@
     {{mapbox-map markers=App.data.companies popup-view=App.PopupView}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="popup">
-    <div class="container">
-      <h2 class="name"><a {{bind-attr href=crunchbase_url}} target="_blank">{{unbound name}}</a></h2>
-      <a {{bind-attr href=homepage_url}} target="_blank">{{homepage_url}}</a><br>
-      <span class="company-category">{{category}}</span>
-      {{#if image}}
-        <img {{bind-attr src=image}} class="pull-right popup-logo">
-      {{/if}}
-      <div class="company-overview">
-        {{{unbound overview}}}
-      </div>
-      <ul class="company-stats">
-        <li>
-          <h2>{{dash-for-null employee_count}}</h2>
-          <h3>EMPLOYEES</h3>
-        </li>
-        <li>
-          <h2>{{dash-for-null money_raised}}</h2>
-          <h3>FUNDING</h3>
-        </li>
-        <li>
-          <h2>{{dash-for-null founded_year}}</h2>
-          <h3>FOUNDED</h3>
-        </li>
-      </ul>
-    </div>
-  </script>
-
   <script src="assets/js/libs/jquery-1.10.2.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
   <script src="assets/js/libs/handlebars-1.1.2.js"></script>
