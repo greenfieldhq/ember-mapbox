@@ -19,14 +19,13 @@ App.MapboxMapComponent = Ember.Component.extend({
 
       var $this = controller;
       marker.on('click', function(event) {
-        var popupView = $this.container.lookup('component:mapbox-map').createChildView(App.PopupView, { context: item });
+        var popupView = $this.container.lookup('component:mapbox-map').createChildView($this.get('popup-view'), { context: item });
         event.target.bindPopup(popupView.renderToBuffer().buffer);
         event.target.openPopup();
       });
     }); 
   }
 });
-
 
 App.PopupView = Ember.View.extend({
   templateName: 'popup'

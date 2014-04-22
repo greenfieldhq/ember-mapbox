@@ -19,6 +19,7 @@ div.map {
   vertical-align: middle;
   padding-top: 2px;
   z-index: 1000 !important;
+  cursor: pointer;
 }
 
 .popup-col {
