@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Mapbox</title>
-  <link rel="stylesheet" href="assets/css/normalize.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 </head>
@@ -18,7 +17,7 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    {{mapbox-map markers=App.data.companies popup-view=App.PopupView}}
+    {{mapbox-map markers=App.data.companies popup-view=App.DefaultPopupView}}
   </script>
 
   <script src="assets/js/libs/jquery-1.10.2.js"></script>

@@ -41,6 +41,6 @@ App.MapboxMapComponent = Ember.Component.extend({
   }.observes('markers')
 });
 
-App.PopupView = Ember.View.extend({
-  template: Ember.Handlebars.compile('<ul><li>name: {{name}}</p><p>overview: {{overview}}</p>')
+App.DefaultPopupView = Ember.View.extend({
+  template: Ember.Handlebars.compile('<ul><li>name: <p>{{name}}</p></li><li>description: {{{description}}}</li></ul>')
 });
