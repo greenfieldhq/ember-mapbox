@@ -21,3 +21,9 @@ div.map {
   z-index: 1000 !important;
   cursor: pointer;
 }
+
+#description {
+  height: 150px;
+  overflow-y: scroll;
+  overflow: -moz-scrollbars-vertical; 
+}
