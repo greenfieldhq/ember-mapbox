@@ -9,7 +9,11 @@ Usage
 Look in app/app.js for a sample configuration
 
 ```js
-App.mapbox = {
+// Register the mapbox component with your app
+App.register('component:mapbox-map', Ember.Mapbox.MapboxMapComponent)
+
+// Set config params for the mapbox component
+Ember.Mapbox.config = {
   api_key: 'greenfield.i0p4gl0k',
   center: [42.35, -71.051],
   zoom: 15
@@ -25,8 +29,11 @@ Initial map zoom
 Sample data can be found in app/data/data.js. You'll want to replace this with your own data which will likely be accessed via your controller.
 ###Example
 ```js
+<script type="text/x-handlebars" data-template-name="components/mapbox-map">
+  <div id="map" class="map"></div>
+</script>
 <script type="text/x-handlebars" data-template-name="index">
-    {{mapbox-map markers=App.data.companies popup-view=App.DefaultPopupView}}
+  {{mapbox-map markers=Ember.Mapbox.data.companies popup-view=Ember.Mapbox.DefaultPopupView}}
 </script>
 ```
 ###Default Popup View

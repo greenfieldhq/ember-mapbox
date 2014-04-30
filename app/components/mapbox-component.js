@@ -1,19 +1,22 @@
-App.MapboxMapComponent = Ember.Component.extend({
+Ember.Mapbox = Ember.Namespace.create();
+
+Ember.Mapbox.MapboxMapComponent = Ember.Component.extend({
   didInsertElement: function() {
+    debugger;
     this._super();
-    App.mapbox.map = L.mapbox.map('map', App.mapbox.api_key).setView(App.mapbox.center, App.mapbox.zoom);
+    Ember.Mapbox.map = L.mapbox.map('map', Ember.Mapbox.config.api_key).setView(Ember.Mapbox.config.center, Ember.Mapbox.config.zoom);
     this.drawMarkers();
   },
   drawMarkers: function() {
-    if (typeof(App.mapbox.map) != 'undefined') {
+    if (typeof(Ember.Mapbox.map) != 'undefined') {
       // remove old markers, skip index 0 as that is the actual map tiles
       var layerIndex = 0;
-      App.mapbox.map.eachLayer(function(layer) {
+      Ember.Mapbox.map.eachLayer(function(layer) {
         if (layerIndex == 0) {
           layerIndex++;
           return;
         }
-        App.mapbox.map.removeLayer(layer);
+        Ember.Mapbox.map.removeLayer(layer);
         layerIndex++;
       }); 
       // add new markers
@@ -26,7 +29,7 @@ App.MapboxMapComponent = Ember.Component.extend({
             iconSize: [15, 15]
           })
         });
-        marker.addTo(App.mapbox.map);
+        marker.addTo(Ember.Mapbox.map);
 
         marker.removeEventListener();
 
@@ -42,10 +45,10 @@ App.MapboxMapComponent = Ember.Component.extend({
   // returns list of markers that are within the bounds of the visible map
   visibleMarkers: function() {
     var inBounds = [],
-        bounds = App.mapbox.map.getBounds();
+        bounds = Ember.Mapbox.map.getBounds();
 
     var layerIndex = 0;
-    App.mapbox.map.eachLayer(function(marker) {
+    Ember.Mapbox.map.eachLayer(function(marker) {
       if (layerIndex == 0) {
         layerIndex++;
         return;
@@ -60,6 +63,6 @@ App.MapboxMapComponent = Ember.Component.extend({
   }.property()
 });
 
-App.DefaultPopupView = Ember.View.extend({
+Ember.Mapbox.DefaultPopupView = Ember.View.extend({
   template: Ember.Handlebars.compile('<ul><li>name: <p>{{name}}</p></li><li>description: <div id="description">{{{description}}}</div></li></ul>')
 });

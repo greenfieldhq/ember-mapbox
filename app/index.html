@@ -17,16 +17,16 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    {{mapbox-map markers=App.data.companies popup-view=App.DefaultPopupView}}
+    {{mapbox-map markers=Ember.Mapbox.data.companies popup-view=Ember.Mapbox.DefaultPopupView}}
   </script>
 
   <script src="assets/js/libs/jquery-1.10.2.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
   <script src="assets/js/libs/handlebars-1.1.2.js"></script>
   <script src="assets/js/libs/ember-1.5.0.js"></script>
-  <script src="app.js"></script>
   <script src="components/mapbox-component.js"></script>
   <script src="data/data.js"></script>
+  <script src="app.js"></script>
 
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>

@@ -1,4 +1,4 @@
-App.data =
+Ember.Mapbox.data =
 {
   "companies":[
   {
