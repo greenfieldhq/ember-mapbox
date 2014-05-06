@@ -19,7 +19,9 @@ Ember.Mapbox.MapboxMapComponent = Ember.Component.extend({
         Ember.Mapbox.map.removeLayer(layer);
         layerIndex++;
       }); 
+
       // add new markers
+      var markers = [];
       var controller = this;
       this.get('markers').forEach(function(item) {
         var marker = L.marker([item.latitude, item.longitude], {
@@ -29,7 +31,9 @@ Ember.Mapbox.MapboxMapComponent = Ember.Component.extend({
             iconSize: [15, 15]
           })
         });
-        marker.addTo(Ember.Mapbox.map);
+        //marker.addTo(Ember.Mapbox.map);
+        // leave this!! otherwise another click event will be created.
+        marker.bindPopup('test');
 
         marker.removeEventListener();
 
@@ -39,7 +43,14 @@ Ember.Mapbox.MapboxMapComponent = Ember.Component.extend({
           event.target.bindPopup(popupView.renderToBuffer().buffer);
           event.target.openPopup();
         });
+
+        markers.push(marker);
       }); 
+
+      var fg = L.featureGroup(markers);
+      fg.addTo(Ember.Mapbox.map);
+
+      //Ember.Mapbox.map.fitBounds(fg.getBounds());
     }
   }.observes('markers'),
   // returns list of markers that are within the bounds of the visible map
